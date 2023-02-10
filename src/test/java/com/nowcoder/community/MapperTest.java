@@ -1,8 +1,10 @@
 package com.nowcoder.community;
 
 import com.nowcoder.community.dao.DiscussMapper;
+import com.nowcoder.community.dao.LoginTicketMapper;
 import com.nowcoder.community.dao.UserMapper;
 import com.nowcoder.community.entity.DiscussPost;
+import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,14 +24,16 @@ public class MapperTest {
     private UserMapper userMapper;
     @Autowired
     private DiscussMapper discussMapper;
+    @Autowired
+    private LoginTicketMapper loginTicketMapper;
     @Test
     public void testSelectById(){
-        User user = userMapper.selectById(101);
-        System.out.println(user);
-        User user2 = userMapper.selectByName("liubei");
+//        User user = userMapper.selectById(101);
+//        System.out.println(user);
+        User user2 = userMapper.selectByName("liujingwei");
         System.out.println(user2);
-        User user3 = userMapper.selectByEmail("nowcoder101@sina.com");
-        System.out.println(user3);
+//        User user3 = userMapper.selectByEmail("nowcoder101@sina.com");
+//        System.out.println(user3);
     }
     @Test
     public void insertUser(){
@@ -61,7 +65,17 @@ public class MapperTest {
         System.out.println("总共： "+allRows);
         int i = discussMapper.selectDiscussPostRows(149);
         System.out.println("id=3: "+i);
-
-
+    }
+    @Test
+    public void testTicket(){
+//        LoginTicket loginTicket=new LoginTicket();
+//        loginTicket.setTicket("qwer");
+//        loginTicket.setId(101);
+//        loginTicket.setExpired(new Date(System.currentTimeMillis()+1000*60*10));
+//        loginTicket.setStatus(0);
+//        loginTicketMapper.insertLoginTicket(loginTicket);
+//        LoginTicket loginTicket = loginTicketMapper.selectByTicket("qwer");
+//        System.out.println(loginTicket);
+        loginTicketMapper.updateStatus("qwer",1);
     }
 }
